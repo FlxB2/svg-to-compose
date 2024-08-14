@@ -35,8 +35,16 @@ class SvgRectNode(
         val baseDimension = root.viewportHeight
         y?.toIntOrNull(baseDimension)
     }
-    val rx: Int? by attribute()
-    val ry: Int? by attribute()
+    val rx: Int? by attribute<SvgLength?, Int?> { y ->
+        val root = rootParent as SvgRootNode
+        val baseDimension = root.viewportHeight
+        y?.toIntOrNull(baseDimension)
+    }
+    val ry: Int? by attribute<SvgLength?, Int?> { y ->
+        val root = rootParent as SvgRootNode
+        val baseDimension = root.viewportHeight
+        y?.toIntOrNull(baseDimension)
+    }
 
     companion object {
         const val TAG_NAME = "rect"
